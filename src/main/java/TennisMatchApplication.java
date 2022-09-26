@@ -31,8 +31,6 @@ public class TennisMatchApplication {
     	int sets2 = 0;
     	//List con los sets ganados por Jugador2
     	List<Integer> pointsList2 = new ArrayList<>();
-    	//Probabilidad de victoria del jugador 2
-    	int winrate2 = 0;
     	
     	//Punto temporal
     	int temp = 0;
@@ -75,13 +73,10 @@ public class TennisMatchApplication {
         do {
         	System.out.println("Probabilidad de que " + player1 + " gane (de 0 a 100):");
         	winrate1 = in.nextInt();
-        
-        	System.out.println("Probabilidad de que " + player2 + " gane (de 0 a 100):");
-        	winrate2 = in.nextInt();
         	
-        	if((winrate1+winrate2)!=100) {
-        		System.out.println("La suma de las probabilidades no puede ser superior ni inferior a 100%");
-        		System.out.println("Por favor, reingrese las correspondientes probabilidades!\n");
+        	if(winrate1>100 || winrate1<0) {
+        		System.out.println("La probabilidad no puede ser superior a 100% ni inferior a 0%");
+        		System.out.println("Por favor, reingrese la correspondiente probabilidad!\n");
         		
         		done = 0;
         	} else {
@@ -94,7 +89,6 @@ public class TennisMatchApplication {
         //Como la suma de las probabilidades es 100, podemos calcularlo utilizando
         //la probabilidad del Jugador 1 sobre 100.
         double rate = winrate1*0.01;
-        System.out.println("WINRATE IS " + rate);
         
         //Variables de estado del partido.
         int game = 0;
